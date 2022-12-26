@@ -54,11 +54,11 @@ function get_path(){
         fi
     fi
 
-    echo $(realpath $PRE_COMMIT_FILE)
+    echo $(realpath -sm $PRE_COMMIT_FILE)
 }
 
 function find_conf(){
-    local PRE_COMMIT_FILE=$(get_path "$(realpath $1)")
+    local PRE_COMMIT_FILE=$(get_path "$(realpath -sm $1)")
 
     while [[ $(dirname $PRE_COMMIT_FILE) != $GITROOT ]]; do
         if [[ -f $PRE_COMMIT_FILE ]]; then
